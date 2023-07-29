@@ -1,11 +1,8 @@
 <?php
 session_start();
-// cek apakah yang mengakses halaman ini sudah login
-if (isset($_SESSION['id_level'])) {
-    header("location:masyarakat/index.php");
-    exit;
+if (isset($_SESSION["login"])) {
+    header("Location: admin/index.php");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -85,9 +82,9 @@ if (isset($_SESSION['id_level'])) {
                             </div>
 
                             <div class="card-body">
-                                <form method="post" action="proses-login.php" class="needs-validation" novalidate="">
+                                <form method="post" action="proses-login-admin.php" class="needs-validation" novalidate="">
                                     <div class="form-group">
-                                        <label for="nama_lengkap">Nama Lengkap</label>
+                                        <label for="nama_lengkap">Username</label>
                                         <input id="nama_lengkap" type="text" class="form-control" name="nama_lengkap" tabindex="1" required autofocus>
                                         <div class="invalid-feedback">
                                             Please fill in your username
@@ -110,9 +107,10 @@ if (isset($_SESSION['id_level'])) {
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                            Login
+                                        <button type="submit" name="login" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                                            Login Masyarakat
                                         </button>
+                                        <a href="login.php" class="btn btn-info btn-block btn-block">Login Admin</a>
                                     </div>
                                 </form>
 

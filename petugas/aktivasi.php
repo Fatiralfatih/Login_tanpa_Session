@@ -1,13 +1,15 @@
 <?php
 
 include '../layouts/header.php';
+
+
 ?>
 
 
 <div id="wrapper">
 
 
-    <?php require_once '../layouts/sidebar.php'; ?>
+    <?php require_once '../layouts/sidebar_petugas.php'; ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -19,6 +21,20 @@ include '../layouts/header.php';
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
+                <?php
+                if (isset($_GET['info'])) {
+                    if ($_GET['info'] == "simpan") { ?>
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fas fa-check"></i> Barang berhasil di Lelang</h5>
+                        </div>k
+                    <?php } else if ($_GET['info'] == "update") { ?>
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fas fa-edit"></i> Barang berhasil di update</h5>
+                        </div>
+                <?php }
+                } ?>
                 <!-- Content Row -->
                 <div class="row">
                     <div class="card shadow mb-4 col-12">
@@ -46,8 +62,8 @@ include '../layouts/header.php';
                                     <tbody>
                                         <?php
                                         $no = 1;
-                                        include "../koneksi.php";
-                                        $tb_lelang = mysqli_query($koneksi, "SELECT * FROM tb_lelang INNER JOIN tb_barang ON tb_lelang.id_barang=tb_barang.id_barang");
+                                        include "../config.php";
+                                        $tb_lelang = mysqli_query($con, "SELECT * FROM tb_lelang INNER JOIN tb_barang ON tb_lelang.id_barang=tb_barang.id_barang");
                                         while ($d_tb_lelang = mysqli_fetch_array($tb_lelang)) {
                                         ?>
                                             <tr>
@@ -169,11 +185,11 @@ include '../layouts/header.php';
                                 <select name="id_barang" class="form-control select2" style="width: 100%;">
                                     <option disabled selected>--- Pilih Barang ---</option>
                                     <?php
-                                    include "../koneksi.php";
-                                    $tb_barang    = mysqli_query($koneksi, "SELECT * FROM tb_barang");
+                                    include "../config.php";
+                                    $tb_barang = mysqli_query($con, "SELECT * FROM tb_barang");
                                     while ($d_tb_barang = mysqli_fetch_array($tb_barang)) {
                                     ?>
-                                        <option value="<?php echo $d_tb_barang['id_barang']; ?>"><?php echo $d_tb_barang['nama_barang']; ?></option>
+                                        <option value="<?= $d_tb_barang['id_barang']; ?>"><?= $d_tb_barang['nama_barang']; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -203,7 +219,9 @@ include '../layouts/header.php';
             <!-- /.container-fluid -->
 
         </div>
-
+        <script>
+            history.pushState({}, "", 'aktivasi.php');
+        </script>
         <?php
 
         require_once '../layouts/footer.php';

@@ -1,35 +1,31 @@
 <?php
 
 include '../layouts/header.php';
+
 ?>
 
 <!-- Page Wrapper -->
 <div id="wrapper">
 
 
-    <?php include '../layouts/sidebar.php'; ?>
+    <?php include '../layouts/sidebar_admin.php'; ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->
         <div id="content">
-
             <?php require_once '../layouts/navbar.php'; ?>
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-
-
-
-
 
                 <!-- Content Row -->
                 <div class="row">
                     <?php
                     if (isset($_GET['info'])) {
                         if ($_GET['info'] == "hapus") { ?>
-                            <div class="alert alert-success alert-dismissible">
+                            <div class="alert alert-danger alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 <h5><i class="icon fas fa-trash"></i> Data berhasil di hapus</h5>
                             </div>
@@ -43,7 +39,8 @@ include '../layouts/header.php';
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 <h5><i class="icon fas fa-edit"></i> Data berhasil di update</h5>
                             </div>
-                    <?php }
+                    <?php unset($_GET['info']);
+                        }
                     } ?>
                     <div class="card shadow mb-4 col-12">
                         <div class="card-header py-3">
@@ -70,8 +67,8 @@ include '../layouts/header.php';
                                     <tbody>
                                         <?php
                                         $no = 1;
-                                        include "../koneksi.php";
-                                        $tb_barang    = mysqli_query($koneksi, "SELECT * FROM tb_barang");
+                                        include "../config.php";
+                                        $tb_barang    = mysqli_query($con, "SELECT * FROM tb_barang");
                                         while ($barangs = mysqli_fetch_array($tb_barang)) {
                                         ?>
                                             <tr>
@@ -207,6 +204,9 @@ include '../layouts/header.php';
         <!-- Footer -->
 
 
+        <script>
+            history.pushState({}, "", 'barang.php');
+        </script>
 
         <?php
 

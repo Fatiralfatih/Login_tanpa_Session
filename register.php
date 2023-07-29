@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Register &mdash; Lelang Universe</title>
+    <title>Register | Lelang Universe</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="http://localhost/webme/asset/modules/bootstrap/css/bootstrap.min.css">
@@ -87,6 +87,11 @@
                                         <div class="invalid-feedback">
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <select name="id_level" class="form-control select2" style="width: 100%;" hidden>
+                                            <option default selected>3</option>
+                                        </select>
+                                    </div>
 
                                     <div class="row">
                                         <div class="form-group col-12">
@@ -97,20 +102,15 @@
                                                 <div class="label"></div>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block">
+                                                Register
+                                            </button>
+                                        </div>
 
-                                    </div>
-
-
-
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                            Register
-                                        </button>
-                                    </div>
-
-                                    <div class="mt-5 text-muted text-center">
-                                        Sudah punya akun? <a href="index.php">Login Disini</a>
-                                    </div>
+                                        <div class="mt-5 text-muted text-center">
+                                            Sudah punya akun? <a href="index.php">Login Disini</a>
+                                        </div>
                                 </form>
                             </div>
                         </div>

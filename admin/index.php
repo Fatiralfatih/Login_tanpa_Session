@@ -1,13 +1,14 @@
 <?php
 
 include '../layouts/header.php';
+
 ?>
 
 <!-- Page Wrapper -->
 <div id="wrapper">
 
 
-    <?php include '../layouts/sidebar.php'; ?>
+    <?php include '../layouts/sidebar_admin.php'; ?>
 
 
     <!-- Content Wrapper -->
@@ -34,10 +35,10 @@ include '../layouts/header.php';
                         <!-- Approach -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Selamat Datang</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Selamat Datang <?= $_SESSION['nama_lengkap']; ?></h6>
                             </div>
                             <div class="card-body">
-                                <p>HAlooo</p>
+                                <p>Anda adalah <?= $_SESSION['nama_lengkap']; ?>, Anda adalah admin</p>
                             </div>
                         </div>
 
